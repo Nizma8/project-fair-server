@@ -31,7 +31,7 @@ pfServer.use(router)
 
 const PORT = 4000 || process.env.PORT
 
-// to run the server application use listen()
+// to run the server application use listen() 
 pfServer.use('/uploads',express.static('./uploads'))
 
 pfServer.listen(PORT,()=>{console.log(`PROJECT FAIR SERVER STARTED AT PORT :${PORT}` );})

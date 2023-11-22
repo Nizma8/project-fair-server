@@ -48,3 +48,21 @@ exports.login = async (req, res) => {
     res.status(401).json(`error transcation failed!!:${error}`);
   }
 };
+
+// profile Update
+exports.updateProfile=async(req,res)=>{
+  const profileImage = req.files.filename
+  const {username, email, password,github,linkedin} =req.body
+  const userId= req.payload
+  try {
+    
+    const updatingUser = await users.findByIdAndUpdate({_id:userId},{
+      username,email, password,profileImage,github,linkedin
+    },{new:true})
+    res.status(200).json(updatingUser);
+
+  } catch (error) {
+    res.status(401).json(error);
+
+  }
+}
